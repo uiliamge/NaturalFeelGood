@@ -1,0 +1,17 @@
+{
+  "ValidationError": {
+    "en": "Some information needs to be reviewed.",
+    "pt": "Algumas informações precisam ser ajustadas.",
+    "es": "Algunas informaciones deben ser revisadas."
+  },
+  "NotFound": {
+    "en": "We couldn't find what you're looking for.",
+    "pt": "Não conseguimos encontrar o que você está procurando.",
+    "es": "No pudimos encontrar lo que estás buscando."
+  },
+  "UnexpectedError": {
+    "en": "Something went wrong while processing your request.",
+    "pt": "Algo deu errado ao processar sua solicitação.",
+    "es": "Algo salió mal al procesar tu solicitud."
+  }
+}
