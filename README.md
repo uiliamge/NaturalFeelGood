@@ -31,3 +31,13 @@ NaturalFeelGood is a modular .NET 8 web application designed to manage and provi
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dotnetcore/dotnetcore-original.svg" alt="dotnet" width="24" height="24" />
 - [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) <img src="https://img.shields.io/badge/DynamoDB-AWS-blue?logo=amazon-dynamodb&logoColor=white" alt="DynamoDB" width="90" height="20" /> (local or AWS instance)
 - [Amazon S3](https://docs.aws.amazon.com/s3/index.html) <img src="https://img.shields.io/badge/S3-AWS-orange?logo=amazon-aws&logoColor=white" alt="S3" width="60" height="20" /> (for file/object storage)
+---
+
+## License
+
+This project is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
+> **NOTICE:**  
+> The name “Natural Feel Good” and the domain “naturalfeelgood.com” are protected by Uiliam Goltz Elesbão as identifiers of the brand and may not be used, reused, or referenced in derivative projects, products, or publications without express written consent.
+
+© 2025 Uiliam Goltz Elesbão. All rights reserved.
