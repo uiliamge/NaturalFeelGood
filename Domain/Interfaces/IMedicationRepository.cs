@@ -5,5 +5,6 @@ namespace NaturalFeelGood.Domain.Interfaces
 {
     public interface IMedicationRepository : IRepository<Medication>
     {
+        Task<Medication?> GetByBrandOrGenericNameAsync(string name);
     }
 }

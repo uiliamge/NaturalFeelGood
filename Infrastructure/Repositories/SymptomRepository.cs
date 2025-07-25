@@ -19,11 +19,11 @@ namespace NaturalFeelGood.Infrastructure.Repositories
             return await _context.ScanAsync<Symptom>(conditions).GetRemainingAsync();
         }
 
-        public async Task<Symptom?> GetByValueAsync(string value)
+        public async Task<Symptom?> GetByIdAsync(string id)
         {
             var conditions = new List<ScanCondition>
             {
-                new ScanCondition("Id", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, value)
+                new ScanCondition("Id", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, id)
             };
             var result = await _context.ScanAsync<Symptom>(conditions).GetRemainingAsync();
             return result.FirstOrDefault();
@@ -36,7 +36,7 @@ namespace NaturalFeelGood.Infrastructure.Repositories
 
         public async Task UpdateAsync(string value, Symptom updated)
         {
-            var existing = await GetByValueAsync(value);
+            var existing = await GetByIdAsync(value);
             if (existing != null)
             {
                 updated.Id = existing.Id;
@@ -46,11 +46,23 @@ namespace NaturalFeelGood.Infrastructure.Repositories
 
         public async Task DeleteAsync(string value)
         {
-            var existing = await GetByValueAsync(value);
+            var existing = await GetByIdAsync(value);
             if (existing != null)
             {
                 await _context.DeleteAsync<Symptom>(existing.Id);
             }
+        }
+
+        public async Task<IEnumerable<Symptom>> GetByIdsAsync(List<string> symptomIds)
+        {
+            var batch = _context.CreateBatchGet<Symptom>();
+            foreach (var id in symptomIds)
+            {
+                batch.AddKey(id);
+            }
+
+            await batch.ExecuteAsync();
+            return batch.Results;
         }
     }
 }

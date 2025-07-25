@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\ElementTypes\Commands\" />
-    <Folder Include="Features\ElementTypes\Dtos\" />
     <Folder Include="Features\ElementTypes\Validators\" />
     <Folder Include="Behaviors\" />
     <Folder Include="Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Features\RemedyAlternatives\Dtos\RemedyAlternativeSimpleDto.cs" />
   </ItemGroup>
 
   <ItemGroup>

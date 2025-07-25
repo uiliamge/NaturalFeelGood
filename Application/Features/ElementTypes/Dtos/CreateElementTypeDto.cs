@@ -1,7 +1,7 @@
 
 using NaturalFeelGood.Domain.Common;
 
-namespace NaturalFeelGood.Application.Features.ElementTypes.Dtos
+namespace NaturalFeelGood.Application.Features.ElementType.Dtos
 {
     public class CreateElementTypeDto
     {

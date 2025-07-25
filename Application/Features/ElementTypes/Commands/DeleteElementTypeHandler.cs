@@ -2,7 +2,7 @@
 using MediatR;
 using NaturalFeelGood.Domain.Interfaces;
 
-namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
+namespace NaturalFeelGood.Application.Features.ElementType.Commands
 {
     public class DeleteElementTypeHandler : IRequestHandler<DeleteElementTypeCommand, Unit>
     {

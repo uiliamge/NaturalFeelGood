@@ -1,7 +1,5 @@
-﻿// Application/Features/Medications/Queries/GetMedicationByNameQuery.cs
-
+﻿using Application.Features.Medications.Dtos;
 using MediatR;
-using NaturalFeelGood.Application.Features.Medications.Dtos;
 
 namespace NaturalFeelGood.Application.Features.Medications.Queries
 {

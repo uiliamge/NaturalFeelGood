@@ -2,9 +2,9 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NaturalFeelGood.Application.Features.ElementTypes.Commands;
-using NaturalFeelGood.Application.Features.ElementTypes.Dtos;
-using NaturalFeelGood.Application.Features.ElementTypes.Queries;
+using NaturalFeelGood.Application.Features.ElementType.Commands;
+using NaturalFeelGood.Application.Features.ElementType.Dtos;
+using NaturalFeelGood.Application.Features.ElementType.Queries;
 
 namespace NaturalFeelGood.API.Controllers
 {

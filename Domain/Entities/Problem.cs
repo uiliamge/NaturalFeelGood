@@ -11,6 +11,7 @@ namespace NaturalFeelGood.Domain.Entities
         public string Id { get; set; } = string.Empty;
 
         public Label Label { get; set; } = new Label();
-        public List<string> Symptoms { get; set; } = new();
+        public string OrganId { get; set; } = string.Empty;
+        public List<string> SymptomsIds { get; set; } = new();
     }
 }

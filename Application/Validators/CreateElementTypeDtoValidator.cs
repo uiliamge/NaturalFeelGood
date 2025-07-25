@@ -1,6 +1,6 @@
 
 using FluentValidation;
-using NaturalFeelGood.Application.Features.ElementTypes.Dtos;
+using NaturalFeelGood.Application.Features.ElementType.Dtos;
 
 namespace NaturalFeelGood.Application.Validators
 {

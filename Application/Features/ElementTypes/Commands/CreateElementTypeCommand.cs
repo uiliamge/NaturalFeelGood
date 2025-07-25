@@ -1,8 +1,10 @@
 
 using MediatR;
-using NaturalFeelGood.Domain.Entities;
 
-namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
+namespace NaturalFeelGood.Application.Features.ElementType.Commands
 {
-    public record CreateElementTypeCommand(ElementType ElementType) : IRequest<Unit>;
+    /// <summary>
+    /// Command to create a new ElementType entity.
+    /// </summary>
+    public record CreateElementTypeCommand(Domain.Entities.ElementType ElementType) : IRequest<Unit>;
 }
