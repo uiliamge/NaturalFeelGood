@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{A3B0630E-DF37-4A7B-B8C4-8BD2F2CAFCF4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NaturalFeelGood", "NaturalFeelGood", "{229EE924-3EB6-E2BB-8333-6E7852B45FF2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaturalFeelGood.Api", "NaturalFeelGood\NaturalFeelGood.Api.csproj", "{526E4133-5D33-4C2B-84BA-A777BB757FAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
@@ -79,5 +77,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85CB1B09-B63E-458E-B0D2-51CDFB38C838}
 	EndGlobalSection
 EndGlobal

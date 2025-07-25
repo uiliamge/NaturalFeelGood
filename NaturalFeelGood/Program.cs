@@ -34,10 +34,14 @@ builder.Services.AddScoped<IElementTypeRepository, ElementTypeRepository>();
 var app = builder.Build();
 
 // 5. Seeder
+// 5. Seeder
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<IDynamoDBContext>();
-    await ElementTypeSeeder.SeedAsync(context);
+    var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+    var s3BaseUrl = configuration.GetSection("S3Settings:BaseUrl").Value
+                    ?? throw new InvalidOperationException("S3Settings:BaseUrl is not configured.");
+    await ElementTypeSeeder.SeedAsync(context, s3BaseUrl);
 }
 
 // 6. Middlewares
