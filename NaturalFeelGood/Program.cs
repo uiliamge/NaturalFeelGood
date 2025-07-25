@@ -4,8 +4,8 @@ using MediatR;
 using NaturalFeelGood.Api.Messages;
 using NaturalFeelGood.Api.Middleware;
 using NaturalFeelGood.Application.Behaviors;
-using NaturalFeelGood.Application.Features.ElementTypes.Commands;
-using NaturalFeelGood.Application.Features.ElementTypes.Mappings;
+using NaturalFeelGood.Application.Features.ElementType.Commands;
+using NaturalFeelGood.Application.Features.ElementType.Mappings;
 using NaturalFeelGood.Application.Validators;
 using NaturalFeelGood.Domain.Interfaces;
 using NaturalFeelGood.Infrastructure;
@@ -33,7 +33,6 @@ builder.Services.AddScoped<IElementTypeRepository, ElementTypeRepository>();
 // 4. Build app
 var app = builder.Build();
 
-// 5. Seeder
 // 5. Seeder
 using (var scope = app.Services.CreateScope())
 {

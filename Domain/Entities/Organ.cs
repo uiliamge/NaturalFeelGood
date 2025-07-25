@@ -10,7 +10,7 @@ namespace NaturalFeelGood.Domain.Entities
         [DynamoDBHashKey]
         public string Id { get; set; } = string.Empty;
 
-        public string BodySystemCategoryId { get; set; }
+        public string BodySystemId { get; set; } = string.Empty;
         public Label Label { get; set; } = new Label();
         public string Image { get; set; } = string.Empty;
         public List<string> Problems { get; set; } = new();

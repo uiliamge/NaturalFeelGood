@@ -1,7 +1,7 @@
 using MediatR;
 using NaturalFeelGood.Domain.Interfaces;
 
-namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
+namespace NaturalFeelGood.Application.Features.ElementType.Commands
 {
     /// <summary>
     /// Handles creation of ElementType.

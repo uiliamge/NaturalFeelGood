@@ -1,17 +1,16 @@
 
 using AutoMapper;
-using NaturalFeelGood.Application.Features.ElementTypes.Dtos;
-using NaturalFeelGood.Domain.Entities;
+using NaturalFeelGood.Application.Features.ElementType.Dtos;
 
-namespace NaturalFeelGood.Application.Features.ElementTypes.Mappings
+namespace NaturalFeelGood.Application.Features.ElementType.Mappings
 {
     public class ElementTypeProfile : Profile
     {
         public ElementTypeProfile()
         {
-            CreateMap<ElementType, ElementTypeDto>().ReverseMap();
-            CreateMap<CreateElementTypeDto, ElementType>();
-            CreateMap<UpdateElementTypeDto, ElementType>();
+            CreateMap<Domain.Entities.ElementType, ElementTypeDto>().ReverseMap();
+            CreateMap<CreateElementTypeDto, Domain.Entities.ElementType>();
+            CreateMap<UpdateElementTypeDto, Domain.Entities.ElementType>();
         }
     }
 }

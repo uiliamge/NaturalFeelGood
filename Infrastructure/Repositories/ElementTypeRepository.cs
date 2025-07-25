@@ -20,7 +20,7 @@ namespace NaturalFeelGood.Infrastructure.Repositories
             return result;
         }
 
-        public async Task<ElementType?> GetByValueAsync(string value)
+        public async Task<ElementType?> GetByIdAsync(string value)
         {
             var conditions = new List<ScanCondition>
             {
@@ -37,7 +37,7 @@ namespace NaturalFeelGood.Infrastructure.Repositories
 
         public async Task UpdateAsync(string value, ElementType updated)
         {
-            var existing = await GetByValueAsync(value);
+            var existing = await GetByIdAsync(value);
             if (existing != null)
             {
                 updated.Id = existing.Id;
@@ -47,7 +47,7 @@ namespace NaturalFeelGood.Infrastructure.Repositories
 
         public async Task DeleteAsync(string value)
         {
-            var existing = await GetByValueAsync(value);
+            var existing = await GetByIdAsync(value);
             if (existing != null)
             {
                 await _context.DeleteAsync<ElementType>(existing.Id);

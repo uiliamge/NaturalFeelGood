@@ -19,16 +19,23 @@ namespace NaturalFeelGood.Infrastructure.Repositories
             return await _context.ScanAsync<RemedyAlternative>(conditions).GetRemainingAsync();
         }
 
-        public async Task<RemedyAlternative?> GetByValueAsync(string value)
+        public async Task<RemedyAlternative?> GetByIdAsync(string id)
         {
             var conditions = new List<ScanCondition>
             {
-                new ScanCondition("Type", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, value)
+                new ScanCondition("Id", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, id)
             };
             var result = await _context.ScanAsync<RemedyAlternative>(conditions).GetRemainingAsync();
             return result.FirstOrDefault();
         }
 
+        public async Task<List<RemedyAlternative>> GetByMedicationIdAsync(string medicationId)
+        {
+            var allRemedies = await _context.ScanAsync<RemedyAlternative>(new List<ScanCondition>()).GetRemainingAsync();
+            return allRemedies
+                .Where(r => r.RelatedMedications != null && r.RelatedMedications.Contains(medicationId))
+                .ToList();
+        }
         public async Task InsertAsync(RemedyAlternative entity)
         {
             await _context.SaveAsync(entity);
@@ -36,7 +43,7 @@ namespace NaturalFeelGood.Infrastructure.Repositories
 
         public async Task UpdateAsync(string value, RemedyAlternative updated)
         {
-            var existing = await GetByValueAsync(value);
+            var existing = await GetByIdAsync(value);
             if (existing != null)
             {
                 updated.Id = existing.Id;
@@ -46,7 +53,7 @@ namespace NaturalFeelGood.Infrastructure.Repositories
 
         public async Task DeleteAsync(string value)
         {
-            var existing = await GetByValueAsync(value);
+            var existing = await GetByIdAsync(value);
             if (existing != null)
             {
                 await _context.DeleteAsync<RemedyAlternative>(existing.Id);
