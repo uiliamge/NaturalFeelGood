@@ -4,10 +4,12 @@ using Application.Features.BodySystem.Dtos;
 using Application.Features.Medications.Dtos;
 using Application.Features.Organ;
 using Application.Features.Problem.Dtos;
-using Application.Features.RemedyAlternative.Dtos;
+using Application.Features.NaturalElement.Dtos;
 using Application.Features.Symptom.Dtos;
 using MediatR;
 using NaturalFeelGood.Application.Features.Medications.Queries;
+using NaturalFeelGood.Domain.Common;
+using NaturalFeelGood.Domain.Entities;
 using NaturalFeelGood.Domain.Interfaces;
 using System.Globalization;
 
@@ -18,24 +20,24 @@ namespace NaturalFeelGood.Application.Features.Medications.Handlers
         private readonly IMedicationRepository _medicationRepository;
         private readonly IProblemRepository _problemRepository;
         private readonly IOrganRepository _organRepository;
-        private readonly IBodySystemCategoryRepository _categoryRepository;
+        private readonly IBodySystemRepository _bodySystemRepository;
         private readonly ISymptomRepository _symptomRepository;
-        private readonly IRemedyAlternativeRepository _remedyRepository;
+        private readonly INaturalElementRepository _naturalElementRepository;
 
         public GetMedicationByNameHandler(
             IMedicationRepository medicationRepository,
             IProblemRepository problemRepository,
             IOrganRepository organRepository,
-            IBodySystemCategoryRepository categoryRepository,
+            IBodySystemRepository bodySystemRepository,
             ISymptomRepository symptomRepository,
-            IRemedyAlternativeRepository remedyRepository)
+            INaturalElementRepository naturalElement)
         {
             _medicationRepository = medicationRepository;
             _problemRepository = problemRepository;
             _organRepository = organRepository;
-            _categoryRepository = categoryRepository;
+            _bodySystemRepository = bodySystemRepository;
             _symptomRepository = symptomRepository;
-            _remedyRepository = remedyRepository;
+            _naturalElementRepository = naturalElement;
         }
 
         public async Task<MedicationDetailDto?> Handle(GetMedicationByNameQuery request, CancellationToken cancellationToken)
@@ -45,7 +47,7 @@ namespace NaturalFeelGood.Application.Features.Medications.Handlers
 
             // Use current UI culture or fallback to "en"
             var language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            if (string.IsNullOrWhiteSpace(language) || !IsValidLanguage(language))
+            if (string.IsNullOrWhiteSpace(language) || !LanguageHelper.IsValidLanguage(language))
                 language = "en";
 
             var problems = new List<ProblemDto>();
@@ -55,63 +57,49 @@ namespace NaturalFeelGood.Application.Features.Medications.Handlers
                 if (problem == null) continue;
 
                 var organ = await _organRepository.GetByIdAsync(problem.OrganId);
-                var category = organ != null ? await _categoryRepository.GetByIdAsync(organ.BodySystemId) : null;
+                var bodySystem = organ != null ? await _bodySystemRepository.GetByIdAsync(organ.BodySystemId) : null;
                 var symptoms = await _symptomRepository.GetByIdsAsync(problem.SymptomsIds);
 
                 problems.Add(new ProblemDto
                 {
                     Id = problem.Id,
-                    Label = GetLabel(problem.Label, language),
+                    Label = LanguageHelper.GetLabel(problem.Label, language),
                     Organ = organ == null ? null : new OrganDto
                     {
                         Id = organ.Id,
-                        Label = GetLabel(organ.Label, language),
-                        Category = category == null ? null : new BodySystemDto
+                        Label = LanguageHelper.GetLabel(organ.Label, language),
+                        BodySystem = bodySystem == null ? null : new BodySystemDto
                         {
-                            Id = category.Id,
-                            Label = GetLabel(category.Label, language)
+                            Id = bodySystem.Id,
+                            Label = LanguageHelper.GetLabel(bodySystem.Label, language)
                         }
                     },
                     Symptoms = symptoms.Select(s => new SymptomDto
                     {
                         Id = s.Id,
-                        Label = GetLabel(s.Label, language)
+                        Label = LanguageHelper.GetLabel(s.Label, language)
                     }).ToList()
                 });
             }
 
-            var remedies = await _remedyRepository.GetByMedicationIdAsync(medication.Id);
-            var replacedBy = remedies.Select(r => new RemedyAlternativeSimpleDto
+            IEnumerable<NaturalElement> remedies = await _naturalElementRepository.GetByMedicationIdAsync(medication.Id);
+            var replacedBy = remedies.Select(r => new NaturalElementSimpleDto
             {
                 Id = r.Id,
-                ElementType = r.ElementType,
-                ElementId = r.ElementId,
-                Usage = GetLabel(r.Usage, language)
+                ElementType = r.Type,
+                ElementId = r.Id,
+                Label = LanguageHelper.GetLabel(r.Label, language)
             }).ToList();
 
             return new MedicationDetailDto
             {
                 Id = medication.Id,
-                BrandName = GetLabel(medication.BrandName, language),
-                GenericName = GetLabel(medication.GenericName, language),
+                BrandName = LanguageHelper.GetLabel(medication.BrandName, language),
+                GenericName = LanguageHelper.GetLabel(medication.GenericName, language),
                 UsedFor = problems,
                 ReplacedBy = replacedBy
             };
         }
-
-        private static string GetLabel(Label label, string language)
-        {
-            return language switch
-            {
-                "pt" => label.Pt ?? label.En ?? string.Empty,
-                "es" => label.Es ?? label.En ?? string.Empty,
-                _ => label.En ?? string.Empty
-            };
-        }
-
-        private static bool IsValidLanguage(string lang)
-        {
-            return lang == "en" || lang == "pt" || lang == "es";
-        }
+                
     }
 }

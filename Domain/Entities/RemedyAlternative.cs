@@ -4,8 +4,8 @@ using NaturalFeelGood.Domain.Common;
 
 namespace NaturalFeelGood.Domain.Entities
 {
-    [DynamoDBTable("RemedyAlternative")]
-    public class RemedyAlternative
+    [DynamoDBTable("NaturalElement")]
+    public class NaturalElement
     {
         [DynamoDBHashKey]
         public string Id { get; set; } = string.Empty;
@@ -15,10 +15,9 @@ namespace NaturalFeelGood.Domain.Entities
         public string Image { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         
-        //Medication relation
         public List<string> RelatedMedications { get; set; } = new();
         public List<string> RelatedProblems { get; set; } = new();
         public List<string> RelatedSymptoms { get; set; } = new();
-        public List<string> ContraindicationTypes { get; set; } = new();
+        public List<string> RelatedContraindicationTypes { get; set; } = new();
     }
 }
