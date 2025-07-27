@@ -2,8 +2,8 @@
 
 namespace Domain.Entities
 {
-    [DynamoDBTable("MedicationXRemedyAlternative")]
-    public class MedicationXRemedyAlternative
+    [DynamoDBTable("NaturalElementXMedication")]
+    public class NaturalElementXMedication
     {
         [DynamoDBHashKey]
         public string Id { get; set; } = default!;

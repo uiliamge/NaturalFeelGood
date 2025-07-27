@@ -9,7 +9,7 @@ NaturalFeelGood is a modular .NET 8 web application designed to manage and provi
 ## Solution Structure
 
 - <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dotnetcore/dotnetcore-original.svg" alt="ASP.NET Core" width="24" height="24" /> **NaturalFeelGood**: ASP.NET Core Web API project. Entry point for the application.
-- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="C#" width="24" height="24" /> **Domain**: Contains core business entities and value objects (e.g., `RemedyAlternative`, `Medication`).
+- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="C#" width="24" height="24" /> **Domain**: Contains core business entities and value objects (e.g., `NaturalElement`, `Medication`).
 - <img src="https://img.shields.io/badge/CQRS-MediatR-blue?logo=mediatr" alt="CQRS" width="90" height="20" /> **Application**: Implements business logic, MediatR commands/queries, and interfaces.
 - <img src="https://img.shields.io/badge/DynamoDB-AWS-blue?logo=amazon-dynamodb&logoColor=white" alt="DynamoDB" width="90" height="20" /> **Infrastructure**: Handles data persistence (DynamoDB), configuration, and repository implementations.
 - <img src="https://img.shields.io/badge/S3-AWS-orange?logo=amazon-aws&logoColor=white" alt="S3" width="60" height="20" /> **S3 Integration**: Handles file and object storage using Amazon S3 buckets.

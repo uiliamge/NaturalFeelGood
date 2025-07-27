@@ -1,6 +1,4 @@
-﻿// Application/Features/Medications/Queries/GetMedicationByNameHandler.cs
-
-using Application.Features.BodySystem.Dtos;
+﻿using Application.Features.BodySystem.Dtos;
 using Application.Features.Medications.Dtos;
 using Application.Features.Organ;
 using Application.Features.Problem.Dtos;
@@ -46,7 +44,7 @@ namespace NaturalFeelGood.Application.Features.Medications.Handlers
             if (medication is null) return null;
 
             // Use current UI culture or fallback to "en"
-            var language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            string language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             if (string.IsNullOrWhiteSpace(language) || !LanguageHelper.IsValidLanguage(language))
                 language = "en";
 

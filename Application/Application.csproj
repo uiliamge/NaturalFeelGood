@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Features\RemedyAlternatives\Dtos\RemedyAlternativeSimpleDto.cs" />
+    <None Include="Features\NaturalElements\Dtos\NaturalElementSimpleDto.cs" />
   </ItemGroup>
 
   <ItemGroup>

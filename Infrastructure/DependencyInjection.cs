@@ -31,7 +31,15 @@ namespace NaturalFeelGood.Infrastructure
             });
 
             services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
+
             services.AddScoped<IElementTypeRepository, ElementTypeRepository>();
+            services.AddScoped<IMedicationRepository, MedicationRepository>();
+            services.AddScoped<IProblemRepository, ProblemRepository>();
+            services.AddScoped<IOrganRepository, OrganRepository>();
+            services.AddScoped<IBodySystemRepository, BodySystemRepository>();
+            services.AddScoped<ISymptomRepository, SymptomRepository>();
+            services.AddScoped<INaturalElementRepository, NaturalElementRepository>();
+
 
             return services;
         }

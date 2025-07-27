@@ -4,7 +4,7 @@ using NaturalFeelGood.Domain.Entities;
 
 namespace NaturalFeelGood.Infrastructure.Seed
 {
-    public static class RemedyAlternativeSeeder
+    public static class NaturalElementsSeeder
     {
         public static async Task SeedAsync(IDynamoDBContext context)
         {

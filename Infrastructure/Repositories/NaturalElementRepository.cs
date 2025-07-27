@@ -60,7 +60,7 @@ namespace NaturalFeelGood.Infrastructure.Repositories
             {
                 new ScanCondition("MedicationId", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, medicationId)
             };
-            var relationList = await _context.ScanAsync<MedicationXRemedyAlternative>(relationConditions).GetRemainingAsync();
+            var relationList = await _context.ScanAsync<NaturalElementXMedication>(relationConditions).GetRemainingAsync();
 
             if (relationList == null || relationList.Count == 0)
                 return Enumerable.Empty<NaturalElement>();
