@@ -1,12 +1,16 @@
 using Amazon.DynamoDBv2.DataModel;
+using Application.Common;
+using Application.Common.Interfaces;
 using FluentValidation;
 using MediatR;
 using NaturalFeelGood.Api.Messages;
 using NaturalFeelGood.Api.Middleware;
+using NaturalFeelGood.Api.Middlewares;
 using NaturalFeelGood.Application.Behaviors;
 using NaturalFeelGood.Application.Features.ElementType.Commands;
 using NaturalFeelGood.Application.Features.ElementType.Mappings;
 using NaturalFeelGood.Application.Validators;
+using NaturalFeelGood.Domain.Common;
 using NaturalFeelGood.Domain.Interfaces;
 using NaturalFeelGood.Infrastructure;
 using NaturalFeelGood.Infrastructure.Repositories;
@@ -25,6 +29,7 @@ builder.Services.AddSingleton<IErrorMessageProvider, JsonErrorMessageProvider>()
 // 2. Application (MediatR, Behaviors, etc)
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateElementTypeCommand>());
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+builder.Services.AddScoped<UserLanguage>();
 
 // 3. Infrastructure (Dynamo, repos, etc)
 builder.Services.AddInfrastructure();
@@ -51,6 +56,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<LanguageMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using NaturalFeelGood.Application.Features.ElementType.Commands;
 using NaturalFeelGood.Application.Features.ElementType.Dtos;
 using NaturalFeelGood.Application.Features.ElementType.Queries;
+using NaturalFeelGood.Domain.Common;
 
 namespace NaturalFeelGood.API.Controllers
 {
@@ -14,11 +15,13 @@ namespace NaturalFeelGood.API.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly UserLanguage _userLanguage;
 
-        public ElementTypeController(IMediator mediator, IMapper mapper)
+        public ElementTypeController(IMediator mediator, IMapper mapper, UserLanguage userLanguage)
         {
             _mediator = mediator;
             _mapper = mapper;
+            _userLanguage = userLanguage;
         }
 
         /// <summary>
@@ -32,6 +35,8 @@ namespace NaturalFeelGood.API.Controllers
         [ProducesResponseType(typeof(List<ElementTypeDto>), 200)]
         public async Task<ActionResult<List<ElementTypeDto>>> Get()
         {
+            var language = HttpContext.Request.Headers["Accept-Language"].ToString();
+
             var result = await _mediator.Send(new GetAllElementTypesQuery());
             return Ok(result);
         }

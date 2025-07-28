@@ -1,5 +1,3 @@
-using NaturalFeelGood.Domain.Common;
-
 namespace NaturalFeelGood.Domain.Common
 {
     public static class LanguageHelper

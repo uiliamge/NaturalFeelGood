@@ -2,6 +2,8 @@
 using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using Application.Common;
+using Application.Common.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NaturalFeelGood.Domain.Interfaces;
@@ -31,7 +33,8 @@ namespace NaturalFeelGood.Infrastructure
             });
 
             services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
-
+            services.AddScoped<ILanguageContext, LanguageContext>();
+            
             services.AddScoped<IElementTypeRepository, ElementTypeRepository>();
             services.AddScoped<IMedicationRepository, MedicationRepository>();
             services.AddScoped<IProblemRepository, ProblemRepository>();
