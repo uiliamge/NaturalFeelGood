@@ -1,5 +1,5 @@
 ﻿using Application.Features.Problem.Dtos;
-using Application.Features.RemedyAlternative.Dtos;
+using Application.Features.NaturalElement.Dtos;
 
 namespace Application.Features.Medications.Dtos
 {
@@ -9,6 +9,6 @@ namespace Application.Features.Medications.Dtos
         public string BrandName { get; set; } = default!;
         public string GenericName { get; set; } = default!;
         public List<ProblemDto> UsedFor { get; set; } = new();
-        public List<RemedyAlternativeSimpleDto> ReplacedBy { get; set; } = new();
+        public List<NaturalElementSimpleDto> ReplacedBy { get; set; } = new();
     }
 }

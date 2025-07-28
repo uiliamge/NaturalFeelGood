@@ -1,4 +1,14 @@
 {
+  "Required": {
+    "en": "This field is required.",
+    "pt": "Este campo é obrigatório.",
+    "es": "Este campo es obligatorio."
+  },
+  "CannotDeleteBecauseInUse": {
+    "en": "This element cannot be deleted because it is in use.",
+    "pt": "Este elemento não pode ser excluído porque está em uso.",
+    "es": "Este elemento no se puede eliminar porque está en uso."
+  },
   "ValidationError": {
     "en": "Some information needs to be reviewed.",
     "pt": "Algumas informações precisam ser ajustadas.",

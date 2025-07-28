@@ -1,5 +1,4 @@
-
-namespace NaturalFeelGood.Api.Messages
+﻿namespace Application.Common.Interfaces
 {
     public interface IErrorMessageProvider
     {

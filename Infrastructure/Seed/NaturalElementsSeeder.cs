@@ -4,13 +4,13 @@ using NaturalFeelGood.Domain.Entities;
 
 namespace NaturalFeelGood.Infrastructure.Seed
 {
-    public static class RemedyAlternativeSeeder
+    public static class NaturalElementsSeeder
     {
         public static async Task SeedAsync(IDynamoDBContext context)
         {
-            var items = new List<RemedyAlternative>
+            var items = new List<NaturalElement>
             {
-                new RemedyAlternative
+                new NaturalElement
                 {
                     Id = "chamomile_tea",
                     Type = "tea",
@@ -20,9 +20,9 @@ namespace NaturalFeelGood.Infrastructure.Seed
                     RelatedMedications = new List<string> { "omeprazole", "sumatriptan" },
                     RelatedProblems = new List<string> { "gastritis", "migraine" },
                     RelatedSymptoms = new List<string>(),
-                    ContraindicationTypes = new List<string>(),
+                    RelatedContraindicationTypes = new List<string>(),
                 },
-                new RemedyAlternative
+                new NaturalElement
                 {
                     Id = "peppermint_tea",
                     Type = "tea",
@@ -32,9 +32,9 @@ namespace NaturalFeelGood.Infrastructure.Seed
                     RelatedMedications = new List<string> { "loperamide" },
                     RelatedProblems = new List<string> { "irritable_bowel_syndrome" },
                     RelatedSymptoms = new List<string>(),
-                    ContraindicationTypes = new List<string>(),
+                    RelatedContraindicationTypes = new List<string>(),
                 },
-                new RemedyAlternative
+                new NaturalElement
                 {
                     Id = "eucalyptus_inhalation",
                     Type = "herb",
@@ -44,9 +44,9 @@ namespace NaturalFeelGood.Infrastructure.Seed
                     RelatedMedications = new List<string> { "salbutamol" },
                     RelatedProblems = new List<string> { "bronchitis" },
                     RelatedSymptoms = new List<string>(),
-                    ContraindicationTypes = new List<string>(),
+                    RelatedContraindicationTypes = new List<string>(),
                 },
-                new RemedyAlternative
+                new NaturalElement
                 {
                     Id = "lavender_oil",
                     Type = "herb",
@@ -56,9 +56,9 @@ namespace NaturalFeelGood.Infrastructure.Seed
                     RelatedMedications = new List<string> { "modafinil", "sumatriptan" },
                     RelatedProblems = new List<string> { "chronic_fatigue", "migraine" },
                     RelatedSymptoms = new List<string>(),
-                    ContraindicationTypes = new List<string>(),
+                    RelatedContraindicationTypes = new List<string>(),
                 },
-                new RemedyAlternative
+                new NaturalElement
                 {
                     Id = "arnica_extract",
                     Type = "herb",
@@ -68,9 +68,9 @@ namespace NaturalFeelGood.Infrastructure.Seed
                     RelatedMedications = new List<string> { "cyclobenzaprine" },
                     RelatedProblems = new List<string> { "muscle_spasm" },
                     RelatedSymptoms = new List<string>(),
-                    ContraindicationTypes = new List<string>(),
+                    RelatedContraindicationTypes = new List<string>(),
                 },
-                new RemedyAlternative
+                new NaturalElement
                 {
                     Id = "aloe_vera_gel",
                     Type = "herb",
@@ -80,9 +80,9 @@ namespace NaturalFeelGood.Infrastructure.Seed
                     RelatedMedications = new List<string> { "hydrocortisone" },
                     RelatedProblems = new List<string> { "dermatitis" },
                     RelatedSymptoms = new List<string>(),
-                    ContraindicationTypes = new List<string>(),
+                    RelatedContraindicationTypes = new List<string>(),
                 },
-                new RemedyAlternative
+                new NaturalElement
                 {
                     Id = "cinnamon_tea",
                     Type = "tea",
@@ -92,13 +92,13 @@ namespace NaturalFeelGood.Infrastructure.Seed
                     RelatedMedications = new List<string> { "ibuprofen" },
                     RelatedProblems = new List<string> { "dysmenorrhea" },
                     RelatedSymptoms = new List<string>(),
-                    ContraindicationTypes = new List<string>(),
+                    RelatedContraindicationTypes = new List<string>(),
                 }
             };
 
             foreach (var item in items)
             {
-                var existing = await context.LoadAsync<RemedyAlternative>(item.Id);
+                var existing = await context.LoadAsync<NaturalElement>(item.Id);
                 if (existing == null)
                 {
                     await context.SaveAsync(item);

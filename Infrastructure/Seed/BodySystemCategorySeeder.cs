@@ -9,9 +9,9 @@ namespace NaturalFeelGood.Infrastructure.Seed
     {
         public static async Task SeedAsync(IDynamoDBContext context)
         {
-            var items = new List<BodySystemCategory>
+            var items = new List<BodySystem>
                 {
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "digestive",
                         Label = new Label { En = "Digestive", Pt = "Digestivo", Es = "Digestivo" },
@@ -20,7 +20,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 1,
                         Image = "digestive.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "respiratory",
                         Label = new Label { En = "Respiratory", Pt = "Respiratório", Es = "Respiratorio" },
@@ -29,7 +29,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 2,
                         Image = "respiratory.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "nervous",
                         Label = new Label { En = "Nervous", Pt = "Nervoso", Es = "Nervioso" },
@@ -38,7 +38,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 3,
                         Image = "nervous.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "immune",
                         Label = new Label { En = "Immune", Pt = "Imunológico", Es = "Inmunológico" },
@@ -47,7 +47,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 4,
                         Image = "immune.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "circulatory",
                         Label = new Label { En = "Circulatory", Pt = "Circulatório", Es = "Circulatorio" },
@@ -56,7 +56,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 5,
                         Image = "circulatory.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "muscular",
                         Label = new Label { En = "Muscular", Pt = "Muscular", Es = "Muscular" },
@@ -65,7 +65,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 6,
                         Image = "muscular.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "skeletal",
                         Label = new Label { En = "Skeletal", Pt = "Esquelético", Es = "Esquelético" },
@@ -74,7 +74,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 7,
                         Image = "skeletal.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "renal",
                         Label = new Label { En = "Renal", Pt = "Renal", Es = "Renal" },
@@ -83,7 +83,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 8,
                         Image = "renal.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "reproductive",
                         Label = new Label { En = "Reproductive", Pt = "Reprodutivo", Es = "Reproductivo" },
@@ -92,7 +92,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
                         Order = 9,
                         Image = "reproductive.jpg"
                     },
-                    new BodySystemCategory
+                    new BodySystem
                     {
                         Id = "integumentary",
                         Label = new Label { En = "Integumentary", Pt = "Tegumentar", Es = "Tegumentario" },
@@ -105,7 +105,7 @@ namespace NaturalFeelGood.Infrastructure.Seed
 
             foreach (var item in items)
             {
-                var existing = await context.LoadAsync<BodySystemCategory>(item.Id);
+                var existing = await context.LoadAsync<BodySystem>(item.Id);
                 if (existing == null)
                 {
                     await context.SaveAsync(item);
