@@ -77,5 +77,78 @@ namespace NaturalFeelGood.Infrastructure.Repositories
 
             return naturalElements;
         }
+
+        public async Task<IEnumerable<NaturalElement>> GetByProblemIdAsync(string problemId)
+        {
+            var relationConditions = new List<ScanCondition>
+            {
+                new ScanCondition("ProblemId", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, problemId)
+            };
+            var relationList = await _context.ScanAsync<NaturalElementXProblem>(relationConditions).GetRemainingAsync();
+
+            if (relationList == null || relationList.Count == 0)
+                return Enumerable.Empty<NaturalElement>();
+
+            var naturalElementsIds = relationList.Select(x => x.NaturalElementId).Distinct().ToList();
+
+            var naturalElements = new List<NaturalElement>();
+            foreach (var naturalElementId in naturalElementsIds)
+            {
+                NaturalElement? naturalElement = await GetByIdAsync(naturalElementId);
+                if (naturalElement != null)
+                    naturalElements.Add(naturalElement);
+            }
+
+            return naturalElements;
+        }
+
+        public async Task<IEnumerable<NaturalElement>> GetBySymptomIdAsync(string symptomId)
+        {
+            var relationConditions = new List<ScanCondition>
+            {
+                new ScanCondition("SymptomId", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, symptomId)
+            };
+            var relationList = await _context.ScanAsync<NaturalElementXSymptom>(relationConditions).GetRemainingAsync();
+
+            if (relationList == null || relationList.Count == 0)
+                return Enumerable.Empty<NaturalElement>();
+
+            var naturalElementsIds = relationList.Select(x => x.NaturalElementId).Distinct().ToList();
+
+            var naturalElements = new List<NaturalElement>();
+            foreach (var naturalElementId in naturalElementsIds)
+            {
+                NaturalElement? naturalElement = await GetByIdAsync(naturalElementId);
+                if (naturalElement != null)
+                    naturalElements.Add(naturalElement);
+            }
+
+            return naturalElements;
+        }
+
+        public async Task<IEnumerable<NaturalElement>> GetByContraindicationTypeIdAsync(string contraindicationTypeId)
+        {
+            var relationConditions = new List<ScanCondition>
+            {
+                new ScanCondition("ContraindicationTypeId", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, contraindicationTypeId)
+            };
+            var relationList = await _context.ScanAsync<NaturalElementXContraindicationType>(relationConditions).GetRemainingAsync();
+
+            if (relationList == null || relationList.Count == 0)
+                return Enumerable.Empty<NaturalElement>();
+
+            var naturalElementsIds = relationList.Select(x => x.NaturalElementId).Distinct().ToList();
+
+            var naturalElements = new List<NaturalElement>();
+            foreach (var naturalElementId in naturalElementsIds)
+            {
+                NaturalElement? naturalElement = await GetByIdAsync(naturalElementId);
+                if (naturalElement != null)
+                    naturalElements.Add(naturalElement);
+            }
+
+            return naturalElements;
+        }
+
     }
 }
