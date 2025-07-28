@@ -61,21 +61,21 @@ namespace NaturalFeelGood.Application.Features.Medications.Handlers
                 problems.Add(new ProblemDto
                 {
                     Id = problem.Id,
-                    Label = LanguageHelper.GetLabel(problem.Label, language),
+                    Label = problem.Label.Get(language),
                     Organ = organ == null ? null : new OrganDto
                     {
                         Id = organ.Id,
-                        Label = LanguageHelper.GetLabel(organ.Label, language),
+                        Label = organ.Label.Get(language),
                         BodySystem = bodySystem == null ? null : new BodySystemDto
                         {
                             Id = bodySystem.Id,
-                            Label = LanguageHelper.GetLabel(bodySystem.Label, language)
+                            Label = bodySystem.Label.Get(language)
                         }
                     },
                     Symptoms = symptoms.Select(s => new SymptomDto
                     {
                         Id = s.Id,
-                        Label = LanguageHelper.GetLabel(s.Label, language)
+                        Label = s.Label.Get(language)
                     }).ToList()
                 });
             }
@@ -86,14 +86,14 @@ namespace NaturalFeelGood.Application.Features.Medications.Handlers
                 Id = r.Id,
                 ElementType = r.Type,
                 ElementId = r.Id,
-                Label = LanguageHelper.GetLabel(r.Label, language)
+                Label = r.Label.Get(language)
             }).ToList();
 
             return new MedicationDetailDto
             {
                 Id = medication.Id,
-                BrandName = LanguageHelper.GetLabel(medication.BrandName, language),
-                GenericName = LanguageHelper.GetLabel(medication.GenericName, language),
+                BrandName = medication.BrandName.Get(language),
+                GenericName = medication.GenericName.Get(language),
                 UsedFor = problems,
                 ReplacedBy = replacedBy
             };

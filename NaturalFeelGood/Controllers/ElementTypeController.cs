@@ -1,4 +1,6 @@
 
+using Application.Features.ElementTypes.Dtos;
+using Application.Features.ElementTypes.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -15,8 +17,7 @@ namespace NaturalFeelGood.API.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
-        private readonly UserLanguage _userLanguage;
-
+        
         public ElementTypeController(IMediator mediator, IMapper mapper, UserLanguage userLanguage)
         {
             _mediator = mediator;
@@ -35,8 +36,6 @@ namespace NaturalFeelGood.API.Controllers
         [ProducesResponseType(typeof(List<ElementTypeDto>), 200)]
         public async Task<ActionResult<List<ElementTypeDto>>> Get()
         {
-            var language = HttpContext.Request.Headers["Accept-Language"].ToString();
-
             var result = await _mediator.Send(new GetAllElementTypesQuery());
             return Ok(result);
         }
@@ -108,5 +107,22 @@ namespace NaturalFeelGood.API.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
+        
+        /// <summary>
+        /// Get element types for dropdown.
+        /// </summary>
+        /// <remarks>
+        /// Returns a list of element types formatted for dropdown selection.
+        /// </remarks>
+        /// <response code="200">Returns the dropdown list of element types</response>
+        [HttpGet("dropdown")]
+        [ProducesResponseType(typeof(List<DropdownDto>), 200)]
+        public async Task<ActionResult<List<DropdownDto>>> GetDropdown()
+        {
+            var result = await _mediator.Send(new GetElementTypeDropdown.Query());
+            return Ok(result);
+        }
+
+
     }
 }

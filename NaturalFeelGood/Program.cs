@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(ElementTypeProfile).Assembly);
 
 
-builder.Services.AddScoped<IErrorMessageProvider, ErrorMessageProvider>();
+builder.Services.AddSingleton<IErrorMessageProvider, ErrorMessageProvider>();
 
 // 2. Application (MediatR, Behaviors, etc)
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateElementTypeCommand>());
