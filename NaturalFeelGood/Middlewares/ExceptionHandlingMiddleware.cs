@@ -1,5 +1,5 @@
+using Application.Common.Interfaces;
 using FluentValidation;
-using NaturalFeelGood.Api.Messages;
 using System.Net;
 using System.Text.Json;
 

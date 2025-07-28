@@ -1,9 +1,9 @@
 using Amazon.DynamoDBv2.DataModel;
-using Application.Common;
 using Application.Common.Interfaces;
+using Application.Features.ElementTypes.Validators;
 using FluentValidation;
 using MediatR;
-using NaturalFeelGood.Api.Messages;
+using NaturalFeelGood.Api.Implementations;
 using NaturalFeelGood.Api.Middleware;
 using NaturalFeelGood.Api.Middlewares;
 using NaturalFeelGood.Application.Behaviors;
@@ -23,13 +23,27 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(ElementTypeProfile).Assembly);
-builder.Services.AddValidatorsFromAssemblyContaining<CreateElementTypeDtoValidator>();
-builder.Services.AddSingleton<IErrorMessageProvider, JsonErrorMessageProvider>();
+
+
+builder.Services.AddScoped<IErrorMessageProvider, ErrorMessageProvider>();
 
 // 2. Application (MediatR, Behaviors, etc)
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateElementTypeCommand>());
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<DeleteElementTypeCommand>());
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<UpdateElementTypeCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateMedicationCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateProblemCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateOrganCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateBodySystemCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateSymptomCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateNaturalElementCommand>());
+
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<UserLanguage>();
+
+// 2.1. FluentValidation
+builder.Services.AddValidatorsFromAssemblyContaining<CreateElementTypeDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<DeleteElementTypeCommandValidator>();
 
 // 3. Infrastructure (Dynamo, repos, etc)
 builder.Services.AddInfrastructure();

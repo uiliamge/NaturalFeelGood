@@ -5,6 +5,7 @@ namespace NaturalFeelGood.Domain.Interfaces
 {
     public interface INaturalElementRepository : IRepository<NaturalElement>
     {
+        Task<int> CountByElementTypeAsync(string value);
         Task<IEnumerable<NaturalElement>> GetByContraindicationTypeIdAsync(string contraindicationTypeId);
         Task<IEnumerable<NaturalElement>> GetByMedicationIdAsync(string id);
         Task<IEnumerable<NaturalElement>> GetByProblemIdAsync(string problemId);

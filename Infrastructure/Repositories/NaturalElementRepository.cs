@@ -150,5 +150,16 @@ namespace NaturalFeelGood.Infrastructure.Repositories
             return naturalElements;
         }
 
+        public async Task<int> CountByElementTypeAsync(string elementType)
+        {
+            var conditions = new List<ScanCondition>
+            {
+                new ScanCondition("Type", Amazon.DynamoDBv2.DocumentModel.ScanOperator.Equal, elementType)
+            };
+
+            var search = _context.ScanAsync<NaturalElement>(conditions);
+            var results = await search.GetRemainingAsync();
+            return results.Count;
+        }
     }
 }

@@ -1,13 +1,13 @@
-
+using Application.Common.Interfaces;
 using System.Text.Json;
 
-namespace NaturalFeelGood.Api.Messages
+namespace NaturalFeelGood.Api.Implementations
 {
-    public class JsonErrorMessageProvider : IErrorMessageProvider
+    public class ErrorMessageProvider : IErrorMessageProvider
     {
         private readonly Dictionary<string, Dictionary<string, string>> _messages;
 
-        public JsonErrorMessageProvider(IWebHostEnvironment env)
+        public ErrorMessageProvider(IWebHostEnvironment env)
         {
             var path = Path.Combine(env.ContentRootPath, "Resources", "error-messages.json");
             var json = File.ReadAllText(path);
