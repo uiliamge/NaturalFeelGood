@@ -6,7 +6,7 @@ namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
 {
     public class UpdateElementTypeCommand : IRequest<Unit>
     {
-        public string Value { get; set; } = string.Empty;
+        public string Id { get; set; } = string.Empty;
         public ElementType UpdatedElementType { get; set; } = new();
     }
 
@@ -21,7 +21,7 @@ namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
 
         public async Task<Unit> Handle(UpdateElementTypeCommand request, CancellationToken cancellationToken)
         {
-            await _repository.UpdateAsync(request.Value, request.UpdatedElementType);
+            await _repository.UpdateAsync(request.Id, request.UpdatedElementType);
             return Unit.Value;
         }
     }

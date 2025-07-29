@@ -6,7 +6,7 @@ namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
 {
     public class DeleteElementTypeCommand : IRequest<Unit>
     {
-        public string Value { get; set; } = string.Empty;
+        public string Id { get; set; } = string.Empty;
     }
 
     public class DeleteElementTypeCommandHandler : IRequestHandler<DeleteElementTypeCommand, Unit>
@@ -20,7 +20,7 @@ namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
 
         public async Task<Unit> Handle(DeleteElementTypeCommand request, CancellationToken cancellationToken)
         {
-            await _repository.DeleteAsync(request.Value);
+            await _repository.DeleteAsync(request.Id);
             return Unit.Value;
         }
     }
