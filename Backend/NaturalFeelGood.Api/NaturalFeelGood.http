@@ -1,0 +1,50 @@
+@NaturalFeelGood_HostAddress = http://localhost:5253
+
+### Get all element types
+GET {{NaturalFeelGood_HostAddress}}/api/ElementType
+Accept: application/json
+
+###
+
+### Create a new element type
+POST {{NaturalFeelGood_HostAddress}}/api/ElementType
+Content-Type: application/json
+
+{
+  "id": "example-type",
+  "label": {
+    "en": "Example",
+    "pt": "Exemplo",
+    "es": "Ejemplo"
+  },
+  "icon": "icon-example",
+  "color": "#FF0000",
+  "order": 1,
+  "image": "example.png"
+}
+
+###
+
+### Update an existing element type
+PUT {{NaturalFeelGood_HostAddress}}/api/ElementType/elementTypeId123
+Content-Type: application/json
+
+{
+  "icon": "icon-updated",
+  "color": "#00FF00",
+  "order": 2,
+  "image": "updated.png",
+  "label": {
+    "en": "Updated",
+    "pt": "Atualizado",
+    "es": "Actualizado"
+  }
+}
+
+###
+
+### Delete an element type
+DELETE {{NaturalFeelGood_HostAddress}}/api/ElementType/elementTypeId123
+Accept: application/json
+
+###

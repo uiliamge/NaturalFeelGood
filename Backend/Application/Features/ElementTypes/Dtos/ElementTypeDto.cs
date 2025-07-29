@@ -1,0 +1,12 @@
+namespace NaturalFeelGood.Application.Features.ElementTypes.Dtos
+{
+    public class ElementTypeDto
+    {
+        public string Value { get; set; } = string.Empty;
+        public string Label { get; set; } = string.Empty;
+        public string Icon { get; set; } = string.Empty;
+        public string Color { get; set; } = string.Empty;
+        public int Order { get; set; }
+        public string Image { get; set; } = string.Empty;
+    }
+}
