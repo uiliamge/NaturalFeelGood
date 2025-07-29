@@ -1,7 +1,7 @@
 # NaturalFeelGood
 
 <p align="center">
-  <img src="Infrastructure/Assets/Images/logo-full.png" alt="NaturalFeelGood Logo" width="320" />
+  <img src="Backend/Infrastructure/Assets/Images/logo-full.png" alt="NaturalFeelGood Logo" width="320" />
 </p>
 
 NaturalFeelGood is a modular .NET 8 web application designed to manage and provide information about natural remedies, alternative treatments, and related entities. The solution follows clean architecture principles, separating domain, application, and infrastructure layers.

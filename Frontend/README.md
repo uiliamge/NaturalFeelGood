@@ -12,23 +12,17 @@ This is a Next.js project named `natural-feel-good`. The project aims to provide
 
 To get started with this project, follow these steps:
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/natural-feel-good.git
-   cd natural-feel-good
-   ```
-
-2. **Install dependencies**:
+1. **Install dependencies**:
    ```bash
    npm install
    ```
 
-3. **Run the development server**:
+2. **Run the development server**:
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**:
+3. **Open your browser**:
    Navigate to `http://localhost:3000` to see the application in action.
 
 ## Project Structure
