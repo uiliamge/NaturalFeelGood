@@ -3,7 +3,7 @@ using MediatR;
 using NaturalFeelGood.Domain.Interfaces;
 using NaturalFeelGood.Domain.Entities;
 
-namespace NaturalFeelGood.Application.Features.ElementType.Queries
+namespace NaturalFeelGood.Application.Features.ElementTypes.Queries
 {
     public record GetAllElementTypesQuery : IRequest<List<Domain.Entities.ElementType>>;
 

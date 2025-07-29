@@ -1,8 +1,28 @@
-
 using MediatR;
-using NaturalFeelGood.Application.Features.ElementType.Dtos;
+using NaturalFeelGood.Domain.Entities;
+using NaturalFeelGood.Domain.Interfaces;
 
-namespace NaturalFeelGood.Application.Features.ElementType.Commands
+namespace NaturalFeelGood.Application.Features.ElementTypes.Commands
 {
-    public record UpdateElementTypeCommand(string Id, UpdateElementTypeDto Element) : IRequest<Unit>;
+    public class UpdateElementTypeCommand : IRequest<Unit>
+    {
+        public string Value { get; set; } = string.Empty;
+        public ElementType UpdatedElementType { get; set; } = new();
+    }
+
+    public class UpdateElementTypeCommandHandler : IRequestHandler<UpdateElementTypeCommand, Unit>
+    {
+        private readonly IElementTypeRepository _repository;
+
+        public UpdateElementTypeCommandHandler(IElementTypeRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<Unit> Handle(UpdateElementTypeCommand request, CancellationToken cancellationToken)
+        {
+            await _repository.UpdateAsync(request.Value, request.UpdatedElementType);
+            return Unit.Value;
+        }
+    }
 }

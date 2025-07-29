@@ -1,13 +1,12 @@
 
-using Application.Features.ElementTypes.Dtos;
+using Application.Features.Common.Dtos;
 using Application.Features.ElementTypes.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NaturalFeelGood.Application.Features.ElementType.Commands;
-using NaturalFeelGood.Application.Features.ElementType.Dtos;
-using NaturalFeelGood.Application.Features.ElementType.Queries;
-using NaturalFeelGood.Domain.Common;
+using NaturalFeelGood.Application.Features.ElementTypes.Commands;
+using NaturalFeelGood.Application.Features.ElementTypes.Dtos;
+using NaturalFeelGood.Application.Features.ElementTypes.Queries;
 
 namespace NaturalFeelGood.API.Controllers
 {
@@ -18,11 +17,10 @@ namespace NaturalFeelGood.API.Controllers
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
         
-        public ElementTypeController(IMediator mediator, IMapper mapper, UserLanguage userLanguage)
+        public ElementTypeController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
-            _mapper = mapper;
-            _userLanguage = userLanguage;
+            _mapper = mapper;            
         }
 
         /// <summary>
@@ -81,7 +79,7 @@ namespace NaturalFeelGood.API.Controllers
             if (string.IsNullOrWhiteSpace(id) || dto == null)
                 return BadRequest();
 
-            var command = new UpdateElementTypeCommand(id, dto);
+            var command = new Command(id, dto);
             await _mediator.Send(command);
             return NoContent();
         }

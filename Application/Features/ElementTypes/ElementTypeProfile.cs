@@ -1,8 +1,8 @@
 
 using AutoMapper;
-using NaturalFeelGood.Application.Features.ElementType.Dtos;
+using NaturalFeelGood.Application.Features.ElementTypes.Dtos;
 
-namespace NaturalFeelGood.Application.Features.ElementType.Mappings
+namespace NaturalFeelGood.Application.Features.ElementTypes.Mappings
 {
     public class ElementTypeProfile : Profile
     {

@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using FluentValidation;
-using NaturalFeelGood.Application.Features.ElementType.Commands;
+using NaturalFeelGood.Application.Features.ElementTypes.Commands;
 using NaturalFeelGood.Domain.Interfaces;
 
 namespace Application.Features.ElementTypes.Validators

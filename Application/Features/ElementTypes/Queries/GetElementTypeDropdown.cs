@@ -1,5 +1,5 @@
 ﻿using Application.Common.Interfaces;
-using Application.Features.ElementTypes.Dtos;
+using Application.Features.Common.Dtos;
 using MediatR;
 using NaturalFeelGood.Domain.Interfaces;
 
