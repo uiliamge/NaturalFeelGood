@@ -9,6 +9,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.855.0",
+    "aws-sdk": "^2.1692.0",
     "next": "latest",
     "next-seo": "latest",
     "react": "^19.1.1",
