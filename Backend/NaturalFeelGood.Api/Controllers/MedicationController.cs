@@ -4,6 +4,7 @@ using Application.Features.Medications.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NaturalFeelGood.Application.Features.Medications.Commands;
 using NaturalFeelGood.Application.Features.Medications.Queries;
 using NaturalFeelGood.Domain.Entities;
 
