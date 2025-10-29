@@ -1,6 +1,4 @@
 
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
 using NaturalFeelGood.Domain.Common;
 using Amazon.DynamoDBv2.DataModel;
 

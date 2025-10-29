@@ -35,6 +35,11 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<De
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateMedicationCommand>());
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<UpdateMedicationCommand>());
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<DeleteMedicationCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateProblemCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateOrganCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateBodySystemCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateSymptomCommand>());
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateNaturalElementCommand>());
 
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddScoped<UserLanguage>();
