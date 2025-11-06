@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.7" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-    <PackageReference Include="MongoDB.Driver" Version="3.4.1" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.508.2" />
   </ItemGroup>
 
   <ItemGroup>

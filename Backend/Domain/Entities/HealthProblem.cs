@@ -4,8 +4,8 @@ using NaturalFeelGood.Domain.Common;
 
 namespace NaturalFeelGood.Domain.Entities
 {
-    [DynamoDBTable("Problem")]
-    public class Problem
+    [DynamoDBTable("HealthProblem")]
+    public class HealthProblem
     {
         [DynamoDBHashKey]
         public string Id { get; set; } = string.Empty;
